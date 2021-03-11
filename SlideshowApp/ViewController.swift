@@ -40,10 +40,13 @@ class ViewController: UIViewController {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideImageView(_:)), userInfo: nil, repeats: true)
             
-            setViewAutoStopStatus()
+            setViewStatusStart()
             
         } else {
-            setViewAutoStartStatus()
+            timer.invalidate()
+            timer = nil
+            
+            setViewStatusStop()
         }
     }
     
@@ -70,7 +73,10 @@ class ViewController: UIViewController {
         
         // タイマーが開始されていた場合は、止める
         if timer != nil {
-            setViewAutoStartStatus()
+            timer.invalidate()
+            timer = nil
+            
+            setViewStatusStop()
         }
     }
     
@@ -108,7 +114,7 @@ class ViewController: UIViewController {
     }
     
     
-    private func setViewAutoStopStatus() {
+    private func setViewStatusStart() {
         autoSlideButton.setTitle("停止", for: .normal)
         
         // 非活性
@@ -119,10 +125,7 @@ class ViewController: UIViewController {
         nextButton.backgroundColor = .lightGray
     }
     
-    private func setViewAutoStartStatus() {
-        timer.invalidate()
-        timer = nil
-        
+    private func setViewStatusStop() {
         autoSlideButton.setTitle("再生", for: .normal)
         
         // 活性化
