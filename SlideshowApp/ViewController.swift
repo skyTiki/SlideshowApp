@@ -17,9 +17,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var autoSlideButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    
+    // 画像ファイル名の配列
+    let fileNameList = ["umi0076-16", "umi0178-22", "umi0179-22", "umi0181-73", "wtr0053-24", "yuu0040-013"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        imageViewButton.setImage(UIImage(named: fileNameList.first!), for: .normal)
     }
 
     // ボタンタップアクション
