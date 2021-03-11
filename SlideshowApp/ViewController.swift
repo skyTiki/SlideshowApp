@@ -38,51 +38,45 @@ class ViewController: UIViewController {
     @IBAction func tappedAutoSlide(_ sender: Any) {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideImageView(_:)), userInfo: nil, repeats: true)
-            autoSlideButton.setTitle("停止", for: .normal)
-            
-            // 非活性
-            backButton.isEnabled = false
-            nextButton.isEnabled = false
-            
-            backButton.backgroundColor = .lightGray
-            nextButton.backgroundColor = .lightGray
+
+            setViewAutoStopStatus()
             
         } else {
-            timer.invalidate()
-            timer = nil
-            
-            autoSlideButton.setTitle("再生", for: .normal)
-            
-            // 活性化
-            backButton.isEnabled = true
-            nextButton.isEnabled = true
-            
-            backButton.backgroundColor = .white
-            nextButton.backgroundColor = .white
+            setViewAutoStartStatus()
         }
     }
     
     // 戻る
     @IBAction func tappedBackButton(_ sender: Any) {
-        setBackFileName()
-        changeImageView()
+        changeBackImageView()
     }
     
     // 進む
     @IBAction func tappedNextButton(_ sender: Any) {
-        setNextFileName()
-        changeImageView()
+        changeNextImageView()
     }
     
     @objc func slideImageView(_ timer: Timer) {
-        setNextFileName()
-        changeImageView()
+        changeNextImageView()
     
     }
     
+    // 画面遷移
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let imageDetailViewController = segue.destination as! ImageDetailViewController
+        imageDetailViewController.fileName = selectedFileName
+        
+        
+        // スライドショーが開始されていた場合は、止める
+        if timer != nil {
+            setViewAutoStartStatus()
+        }
+    }
     
+    
+    // 内部処理
     // 次のファイルネームをselectedFileNameにセットする
-    private func setNextFileName() {
+    private func changeNextImageView() {
         // 選択された画像のインデックスを取得
         guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
@@ -92,9 +86,10 @@ class ViewController: UIViewController {
         } else {
             selectedFileName = fileNameList[selectedFileNameIndex + 1]
         }
+        imageViewButton.setImage(UIImage(named: selectedFileName), for: .normal)
     }
     // 前のファイルネームをselectedFileNameにセットする
-    private func setBackFileName() {
+    private func changeBackImageView() {
         // 選択された画像のインデックスを取得
         guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
@@ -104,15 +99,34 @@ class ViewController: UIViewController {
         } else {
             selectedFileName = fileNameList[selectedFileNameIndex - 1]
         }
+        imageViewButton.setImage(UIImage(named: selectedFileName), for: .normal)
     }
     
-    // selectedFileNameに切り替える
-    private func changeImageView() {
-        UIView.animate(withDuration: 1) {
-            self.imageViewButton.alpha = 0.5
-            self.imageViewButton.setImage(UIImage(named: self.selectedFileName), for: .normal)
-            self.imageViewButton.alpha = 1
-        }
+    
+    private func setViewAutoStopStatus() {
+        autoSlideButton.setTitle("停止", for: .normal)
+        
+        // 非活性
+        backButton.isEnabled = false
+        nextButton.isEnabled = false
+        
+        backButton.backgroundColor = .lightGray
+        nextButton.backgroundColor = .lightGray
     }
+    
+    private func setViewAutoStartStatus() {
+        timer.invalidate()
+        timer = nil
+        
+        autoSlideButton.setTitle("再生", for: .normal)
+        
+        // 活性化
+        backButton.isEnabled = true
+        nextButton.isEnabled = true
+        
+        backButton.backgroundColor = .white
+        nextButton.backgroundColor = .white
+    }
+    
 }
 

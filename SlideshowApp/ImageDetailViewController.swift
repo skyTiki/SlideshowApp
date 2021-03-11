@@ -10,11 +10,12 @@ import UIKit
 class ImageDetailViewController: UIViewController {
 
     @IBOutlet weak var imageViiew: UIImageView!
+    var fileName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        imageViiew.image = UIImage(named: fileName)
     }
     
 }
