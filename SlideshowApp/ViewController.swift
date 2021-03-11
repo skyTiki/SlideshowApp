@@ -17,20 +17,40 @@ class ViewController: UIViewController {
     @IBOutlet weak var autoSlideButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    var timer: Timer!
     
     // 画像ファイル名の配列
-    let fileNameList = ["umi0076-16", "umi0178-22", "umi0179-22", "umi0181-73", "wtr0053-24", "yuu0040-013"]
+    let fileNameList = ["umi0076-16", "umi0178-22", "umi0179-22", "umi0181-73", "wtr0053-24", "yuu0040-13"]
+    // 現在表示している画像
+    var selectedFileName = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         imageViewButton.setImage(UIImage(named: fileNameList.first!), for: .normal)
+        selectedFileName = fileNameList.first!
     }
 
     // ボタンタップアクション
     // 自動再生・停止
     @IBAction func tappedAutoSlide(_ sender: Any) {
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideImageView(_:)), userInfo: nil, repeats: true)
+            autoSlideButton.setTitle("停止", for: .normal)
+            
+            backButton.isEnabled = false
+            nextButton.isEnabled = false
+        } else {
+            timer.invalidate()
+            timer = nil
+            
+            autoSlideButton.setTitle("再生", for: .normal)
+            
+            backButton.isEnabled = true
+            nextButton.isEnabled = true
+        }
     }
     
     // 戻る
@@ -41,7 +61,27 @@ class ViewController: UIViewController {
     @IBAction func tappedNextButton(_ sender: Any) {
     }
     
+    @objc func slideImageView(_ timer: Timer) {
+        // 選択された画像のインデックスを取得
+        guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
+        
+        // 次の写真の名前を設定（最後の写真の場合は最初に戻る）
+        if selectedFileNameIndex == fileNameList.count - 1 {
+            selectedFileName = fileNameList[0]
+        } else {
+            selectedFileName = fileNameList[selectedFileNameIndex + 1]
+        }
+        
+        changeImageView()
+
+    }
     
-    
+    private func changeImageView() {
+        UIView.animate(withDuration: 1) {
+            self.imageViewButton.alpha = 0.5
+            self.imageViewButton.setImage(UIImage(named: self.selectedFileName), for: .normal)
+            self.imageViewButton.alpha = 1
+        }
+    }
 }
 
