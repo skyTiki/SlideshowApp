@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // アウトレット接続　画像表示用ボタン
     @IBOutlet weak var imageViewButton: UIButton!
     
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         imageViewButton.setImage(UIImage(named: fileNameList.first!), for: .normal)
         selectedFileName = fileNameList.first!
     }
-
+    
     // ボタンタップアクション
     // 自動再生・停止
     @IBAction func tappedAutoSlide(_ sender: Any) {
@@ -55,13 +55,25 @@ class ViewController: UIViewController {
     
     // 戻る
     @IBAction func tappedBackButton(_ sender: Any) {
+        setBackFileName()
+        changeImageView()
     }
     
     // 進む
     @IBAction func tappedNextButton(_ sender: Any) {
+        setNextFileName()
+        changeImageView()
     }
     
     @objc func slideImageView(_ timer: Timer) {
+        setNextFileName()
+        changeImageView()
+    
+    }
+    
+    
+    // 次のファイルネームをselectedFileNameにセットする
+    private func setNextFileName() {
         // 選択された画像のインデックスを取得
         guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
@@ -71,11 +83,21 @@ class ViewController: UIViewController {
         } else {
             selectedFileName = fileNameList[selectedFileNameIndex + 1]
         }
+    }
+    // 前のファイルネームをselectedFileNameにセットする
+    private func setBackFileName() {
+        // 選択された画像のインデックスを取得
+        guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
-        changeImageView()
-
+        // 前の写真の名前を設定（最初の写真の場合は最後にする）
+        if selectedFileNameIndex == 0{
+            selectedFileName = fileNameList[fileNameList.count - 1]
+        } else {
+            selectedFileName = fileNameList[selectedFileNameIndex - 1]
+        }
     }
     
+    // selectedFileNameに切り替える
     private func changeImageView() {
         UIView.animate(withDuration: 1) {
             self.imageViewButton.alpha = 0.5
