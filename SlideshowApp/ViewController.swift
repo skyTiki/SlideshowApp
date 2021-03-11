@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // 配列に必ず先頭が存在しているため強制アンラップ
         imageViewButton.setImage(UIImage(named: fileNameList.first!), for: .normal)
         selectedFileName = fileNameList.first!
     }
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
     @IBAction func tappedAutoSlide(_ sender: Any) {
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideImageView(_:)), userInfo: nil, repeats: true)
-
+            
             setViewAutoStopStatus()
             
         } else {
@@ -56,9 +57,9 @@ class ViewController: UIViewController {
         changeNextImageView()
     }
     
+    // タイマーから呼ばれる処理
     @objc func slideImageView(_ timer: Timer) {
         changeNextImageView()
-    
     }
     
     // 画面遷移
@@ -67,7 +68,7 @@ class ViewController: UIViewController {
         imageDetailViewController.fileName = selectedFileName
         
         
-        // スライドショーが開始されていた場合は、止める
+        // タイマーが開始されていた場合は、止める
         if timer != nil {
             setViewAutoStartStatus()
         }
@@ -80,12 +81,14 @@ class ViewController: UIViewController {
         // 選択された画像のインデックスを取得
         guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
-        // 次の写真の名前を設定（最後の写真の場合は最初に戻る）
+        // 次の写真の名前を設定
+        // 最後の写真の場合は最初に戻る
         if selectedFileNameIndex == fileNameList.count - 1 {
             selectedFileName = fileNameList[0]
         } else {
             selectedFileName = fileNameList[selectedFileNameIndex + 1]
         }
+        
         imageViewButton.setImage(UIImage(named: selectedFileName), for: .normal)
     }
     // 前のファイルネームをselectedFileNameにセットする
@@ -93,12 +96,14 @@ class ViewController: UIViewController {
         // 選択された画像のインデックスを取得
         guard let selectedFileNameIndex = fileNameList.firstIndex(where: { $0 == selectedFileName }) else { return }
         
-        // 前の写真の名前を設定（最初の写真の場合は最後にする）
+        // 前の写真の名前を設定
+        // 最初の写真の場合は最後にする
         if selectedFileNameIndex == 0{
             selectedFileName = fileNameList[fileNameList.count - 1]
         } else {
             selectedFileName = fileNameList[selectedFileNameIndex - 1]
         }
+        
         imageViewButton.setImage(UIImage(named: selectedFileName), for: .normal)
     }
     
