@@ -40,16 +40,25 @@ class ViewController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideImageView(_:)), userInfo: nil, repeats: true)
             autoSlideButton.setTitle("停止", for: .normal)
             
+            // 非活性
             backButton.isEnabled = false
             nextButton.isEnabled = false
+            
+            backButton.backgroundColor = .lightGray
+            nextButton.backgroundColor = .lightGray
+            
         } else {
             timer.invalidate()
             timer = nil
             
             autoSlideButton.setTitle("再生", for: .normal)
             
+            // 活性化
             backButton.isEnabled = true
             nextButton.isEnabled = true
+            
+            backButton.backgroundColor = .white
+            nextButton.backgroundColor = .white
         }
     }
     
