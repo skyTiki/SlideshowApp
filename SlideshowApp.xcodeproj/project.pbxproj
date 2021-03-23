@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11BF0E32609A0B600818934 /* yuu0040-013.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0DD2609A0B600818934 /* yuu0040-013.jpeg */; };
+		A11BF0E42609A0B600818934 /* umi0076-016.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0DE2609A0B600818934 /* umi0076-016.jpeg */; };
+		A11BF0E52609A0B600818934 /* umi0179-022.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0DF2609A0B600818934 /* umi0179-022.jpeg */; };
+		A11BF0E62609A0B600818934 /* umi0178-022.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0E02609A0B600818934 /* umi0178-022.jpeg */; };
+		A11BF0E72609A0B600818934 /* umi0181-073.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0E12609A0B600818934 /* umi0181-073.jpeg */; };
+		A11BF0E82609A0B600818934 /* wtr0053-024.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A11BF0E22609A0B600818934 /* wtr0053-024.jpeg */; };
 		A134268425F9D09200575031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134268325F9D09200575031 /* AppDelegate.swift */; };
 		A134268625F9D09200575031 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134268525F9D09200575031 /* SceneDelegate.swift */; };
 		A134268825F9D09200575031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134268725F9D09200575031 /* ViewController.swift */; };
@@ -17,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A11BF0DD2609A0B600818934 /* yuu0040-013.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "yuu0040-013.jpeg"; sourceTree = "<group>"; };
+		A11BF0DE2609A0B600818934 /* umi0076-016.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "umi0076-016.jpeg"; sourceTree = "<group>"; };
+		A11BF0DF2609A0B600818934 /* umi0179-022.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "umi0179-022.jpeg"; sourceTree = "<group>"; };
+		A11BF0E02609A0B600818934 /* umi0178-022.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "umi0178-022.jpeg"; sourceTree = "<group>"; };
+		A11BF0E12609A0B600818934 /* umi0181-073.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "umi0181-073.jpeg"; sourceTree = "<group>"; };
+		A11BF0E22609A0B600818934 /* wtr0053-024.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wtr0053-024.jpeg"; sourceTree = "<group>"; };
 		A134268025F9D09200575031 /* SlideshowApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideshowApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A134268325F9D09200575031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A134268525F9D09200575031 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A11BF0DC2609A09B00818934 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A11BF0DE2609A0B600818934 /* umi0076-016.jpeg */,
+				A11BF0E02609A0B600818934 /* umi0178-022.jpeg */,
+				A11BF0DF2609A0B600818934 /* umi0179-022.jpeg */,
+				A11BF0E12609A0B600818934 /* umi0181-073.jpeg */,
+				A11BF0E22609A0B600818934 /* wtr0053-024.jpeg */,
+				A11BF0DD2609A0B600818934 /* yuu0040-013.jpeg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		A134267725F9D09200575031 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +91,7 @@
 				A134268C25F9D09400575031 /* Assets.xcassets */,
 				A134268E25F9D09400575031 /* LaunchScreen.storyboard */,
 				A134269125F9D09400575031 /* Info.plist */,
+				A11BF0DC2609A09B00818934 /* Images */,
 			);
 			path = SlideshowApp;
 			sourceTree = "<group>";
@@ -127,9 +153,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11BF0E72609A0B600818934 /* umi0181-073.jpeg in Resources */,
+				A11BF0E32609A0B600818934 /* yuu0040-013.jpeg in Resources */,
+				A11BF0E52609A0B600818934 /* umi0179-022.jpeg in Resources */,
+				A11BF0E82609A0B600818934 /* wtr0053-024.jpeg in Resources */,
+				A11BF0E42609A0B600818934 /* umi0076-016.jpeg in Resources */,
 				A134269025F9D09400575031 /* LaunchScreen.storyboard in Resources */,
 				A134268D25F9D09400575031 /* Assets.xcassets in Resources */,
 				A134268B25F9D09200575031 /* Main.storyboard in Resources */,
+				A11BF0E62609A0B600818934 /* umi0178-022.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CYWJ8XR6PA;
 				INFOPLIST_FILE = SlideshowApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CYWJ8XR6PA;
 				INFOPLIST_FILE = SlideshowApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
