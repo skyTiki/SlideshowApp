@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var timer: Timer!
     
     // 画像ファイル名の配列
-    let fileNameList = ["umi0076-16", "umi0178-22", "umi0179-22", "umi0181-73", "wtr0053-24", "yuu0040-13"]
+    let fileNameList = ["umi0076-016.jpeg", "umi0178-022.jpeg", "umi0179-022.jpeg", "umi0181-073.jpeg", "wtr0053-024.jpeg", "yuu0040-013.jpeg"]
     // 現在表示している画像
     var selectedFileName = ""
     
